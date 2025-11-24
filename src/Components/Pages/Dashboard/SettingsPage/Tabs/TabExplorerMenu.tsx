@@ -12,6 +12,7 @@ import { ProjectItem } from 'Types/LogicStoreType'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { format } from 'date-fns'
+import { useNavigate } from 'react-router-dom'
 
 import type { LogicStoreSettingsType } from 'Types/LogicStoreType'
 
@@ -164,6 +165,7 @@ function SideA() {
 
 function SideB() {
   const dispatch = useDispatch<AppDispatch>()
+  const navigate = useNavigate()
   const [projectdata, setProjectData] = useState<ProjectData | null>(null)
   const [loading, setLoading] = useState(false)
 
@@ -393,9 +395,7 @@ function SideB() {
                   Editar Projeto
                 </button>
                 <button
-                  onClick={() =>
-                    window.open(`/preview/${selecionado}`, '_blank')
-                  }
+                  onClick={() => navigate(`/pub/${selecionado}`)}
                   className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/10 px-4 py-3 font-medium text-white transition-all hover:bg-white/20"
                   title="Visualizar"
                 >

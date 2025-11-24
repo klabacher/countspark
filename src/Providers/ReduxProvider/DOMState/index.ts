@@ -67,6 +67,11 @@ export const reduxSlice = createSlice({
     },
     logout(state) {
       state.AuthInfo = initialState.AuthInfo
+    },
+    // Theme reducer
+    toggleTheme(state) {
+      state.selectedStyleMode =
+        state.selectedStyleMode === 'dark' ? 'light' : 'dark'
     }
   }
 })
@@ -80,7 +85,8 @@ export const {
   logout,
   updateDashboardPageState,
   updateSettingsTabState,
-  updateSelectedItemId
+  updateSelectedItemId,
+  toggleTheme
 } = reduxSlice.actions
 export default reduxSlice.reducer
 

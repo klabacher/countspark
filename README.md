@@ -31,6 +31,7 @@
 - src/components/App.tsx: TODO: add new sucess box for changes
 - src/components/App.tsx: TODO: Add supabase persistence and web id for configuration
 - src/components/OverlayMenuContainer/ImageUrlPicker/index.tsx: Todo: Validate URL format or show error message and leave placeholder
+- Maybe add Deno for checking
 
 ### Install and Run
 

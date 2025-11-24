@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { utcDiffMs } from 'Utils'
 import { useTranslation } from 'react-i18next'
 import i18n from 'Providers/InternationalizationProvider'
+import { LogicPreviewStoreType } from 'Types/LogicStoreType'
 
 const Divisor = ({ el }: { el: string }): JSX.Element => (
   <div className="text-2xl text-white">{el}</div>
@@ -28,9 +29,11 @@ const Segundos = ({ valor }: { valor: number }) => {
   )
 }
 
-export function Buttons() {
-  // Get current data from Redux store (reactive)
-  const currentData = useSelector((state: RootState) => state.counter.Settings)
+export function Buttons({
+  currentData
+}: {
+  currentData: LogicPreviewStoreType
+}) {
   const buttons = currentData.Texts.buttons
 
   return (
@@ -54,9 +57,7 @@ export function Buttons() {
   )
 }
 
-function CountSpark() {
-  // Ge Redux states here
-  const currentData = useSelector((state: RootState) => state.counter.Settings)
+function CountSpark({ currentData }: { currentData: LogicPreviewStoreType }) {
   // Todo: add timezone show/hide logic
   const { showTimezone, timezone } = currentData.Settings
 
@@ -180,9 +181,15 @@ function CountSpark() {
   )
 }
 
-function Counter() {
-  // Get current data from Redux store (reactive)
-  const currentData = useSelector((state: RootState) => state.counter.Settings)
+function Counter({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  type
+}: {
+  type: 'production' | 'preview' | 'previewMinified'
+}) {
+  const currentData = useSelector(
+    (state: RootState) => state.counter.Production
+  )
 
   return (
     <div className="flex h-full flex-col place-content-center items-center font-mono text-white">
@@ -196,18 +203,22 @@ function Counter() {
         {currentData.Texts.calltoAction ? (
           <p className="mb-4 text-sm">{currentData.Texts.calltoAction}</p>
         ) : null}
-        <Buttons />
+        <Buttons currentData={currentData} />
       </div>
-      <CountSpark />
+      <CountSpark currentData={currentData} />
     </div>
   )
 }
 
-export default function CounterContainer() {
+export default function CounterContainer({
+  type
+}: {
+  type: 'production' | 'preview' | 'previewMinified'
+}): JSX.Element {
   const { t } = useTranslation()
   return (
     <div className="flex h-full w-1/2 flex-col bg-slate-800 p-2">
-      <Counter />
+      <Counter type={type} />
       <footer className="mt-auto text-center text-xl text-gray-400">
         <div>{t('hud.texts.footer')}</div>
         <div className="mt-1 flex items-center justify-center space-x-3">

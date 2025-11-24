@@ -84,6 +84,7 @@ export type LogicStoreSettingsType = {
 }
 
 type LogicStoreType = {
+  Production: LogicPreviewStoreType
   Preview: LogicPreviewStoreType
   PreviewMinified: LogicPreviewMinifiedStoreType
   Settings: LogicStoreSettingsType

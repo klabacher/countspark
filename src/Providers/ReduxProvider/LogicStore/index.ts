@@ -55,6 +55,7 @@ const baseValues = {
 
 const initialState: LogicStoreType = {
   // Aqui garantimos independência criando cópias profundas
+  Production: JSON.parse(JSON.stringify(baseValues)),
   Preview: JSON.parse(JSON.stringify(baseValues)),
   PreviewMinified: JSON.parse(JSON.stringify(baseValues)),
   Settings: JSON.parse(JSON.stringify(baseValues)),
@@ -73,6 +74,12 @@ export const reduxSlice = createSlice({
   name: 'redux',
   initialState,
   reducers: {
+    updateProduction(
+      state: ReduxState,
+      action: PayloadAction<LogicPreviewStoreType>
+    ) {
+      state.Production = action.payload
+    },
     updatePreview<K extends keyof LogicPreviewStoreType>(
       state: ReduxState,
       action: PayloadAction<UpdatePayload<LogicPreviewStoreType, K>>
@@ -111,6 +118,7 @@ export const reduxSlice = createSlice({
 })
 
 export const {
+  updateProduction,
   updatePreview,
   updatePreviewFull,
   updatePreviewMinified,

@@ -16,6 +16,7 @@ import supabase from 'Providers/SupabaseProvider'
 import { authSuccess, logout } from 'Providers/ReduxProvider/DOMState'
 import Loading from 'Components/Utils/Loading'
 import { UserProfile } from 'Types/DOMStateType'
+// import ThemeToggle from 'Components/Utils/ThemeToggle'
 
 // FrontPage and Login are the same
 import FrontPage from 'Routes/FrontPage'
@@ -32,11 +33,21 @@ function PrivateRoute({ children }: { children: JSX.Element }) {
   return isLoggedIn ? children : <Navigate to="/" />
 }
 
+// Broken route for some reason
+// function PublicRoute({ children }: { children: JSX.Element }) {
+//   return (
+//     <div className="relative min-h-screen w-full overflow-hidden bg-slate-50 dark:bg-slate-950">
+//       <div className="absolute right-4 top-4 z-50">
+//         <ThemeToggle />
+//       </div>
+//       {children}
+//     </div>
+//   )
+// }
 function PublicRoute({ children }: { children: JSX.Element }) {
-  // Implement App Logic for SaaS public access
   return children
 }
-
+// TODO: Fully review all the routes and structure of pages/tabs for better DX
 // add option for easy path for projects, instead of an uid keeping it only for development purposes
 function RoutesContainer() {
   return (
@@ -63,11 +74,26 @@ function RoutesContainer() {
   )
 }
 
+function ThemeHandler() {
+  const theme = useSelector((state: RootState) => state.dom.selectedStyleMode)
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [theme])
+
+  return null
+}
+
 function AppContainer() {
   return (
     <StrictMode>
       {/* TODO: Add supabase persistence and web id for configuration */}
       <Provider store={store}>
+        <ThemeHandler />
         <BrowserRouter basename="/countspark">
           <SessionHandler>
             <RoutesContainer />
