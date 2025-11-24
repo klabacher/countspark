@@ -22,7 +22,7 @@ export default function CountDownContainer() {
   return (
     <div className="flex h-full flex-row">
       <RandomImageContainer />
-      <CounterContainer />
+      <CounterContainer type="preview" />
     </div>
   )
 }

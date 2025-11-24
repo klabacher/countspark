@@ -19,7 +19,7 @@ function EditNewProject() {
             Novo Projeto
           </h1>
         </div>
-        <div className="flex size-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-950/20 shadow-2xl ring-1 ring-black/50 backdrop-blur-xl transition-all">
+        <div className="flex size-full flex-col overflow-hidden rounded-sm border border-white/10 bg-slate-950/20 shadow-2xl ring-1 ring-black/50 backdrop-blur-xl transition-all">
           <div>Editar Horario</div>
           <div className="flex flex-row">
             <div>
@@ -30,7 +30,7 @@ function EditNewProject() {
         </div>
       </div>
       <div className="relative z-10 flex h-2/3 w-full items-center justify-center p-4">
-        <div className="flex size-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-950/20 shadow-2xl ring-1 ring-black/50 backdrop-blur-xl transition-all"></div>
+        <div className="flex size-full flex-col overflow-hidden rounded-sm border border-white/10 bg-slate-950/20 shadow-2xl ring-1 ring-black/50 backdrop-blur-xl transition-all"></div>
       </div>
     </div>
   )
@@ -55,7 +55,7 @@ function EditOldProject() {
             Editar Projeto {selecionado}
           </h1>
         </div>
-        <div className="flex size-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-950/20 shadow-2xl ring-1 ring-black/50 backdrop-blur-xl transition-all">
+        <div className="flex size-full flex-col overflow-hidden rounded-sm border border-white/10 bg-slate-950/20 shadow-2xl ring-1 ring-black/50 backdrop-blur-xl transition-all">
           <div>Editar Horario</div>
           <div className="flex flex-row">
             <div>
@@ -66,7 +66,7 @@ function EditOldProject() {
         </div>
       </div>
       <div className="relative z-10 flex h-2/3 w-full items-center justify-center p-4">
-        <div className="flex size-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-950/20 shadow-2xl ring-1 ring-black/50 backdrop-blur-xl transition-all"></div>
+        <div className="flex size-full flex-col overflow-hidden rounded-sm border border-white/10 bg-slate-950/20 shadow-2xl ring-1 ring-black/50 backdrop-blur-xl transition-all"></div>
       </div>
     </div>
   )

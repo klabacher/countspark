@@ -115,7 +115,7 @@ const ItemList = ({ items }: { items: ProjectItem[] }) => {
       </div>
 
       <div className="border-t border-slate-200 bg-slate-50/50 px-6 py-3 dark:border-white/10 dark:bg-white/[0.02]">
-        <button className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-slate-300 py-2 text-xs font-medium text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-700 dark:border-slate-600 dark:text-slate-400 dark:hover:border-slate-400 dark:hover:text-white">
+        <button className="flex w-full items-center justify-center gap-2 rounded-sm border border-dashed border-slate-300 py-2 text-xs font-medium text-slate-500 transition-colors hover:border-slate-400 hover:text-slate-700 dark:border-slate-600 dark:text-slate-400 dark:hover:border-slate-400 dark:hover:text-white">
           <Icon icon="mdi:plus" />
           Criar Novo Projeto
         </button>
@@ -152,7 +152,7 @@ function SideA() {
       </div>
 
       <div className="relative z-10 flex size-full items-center justify-center p-4 sm:p-6">
-        <div className="flex h-full max-h-[90%] w-4/5 flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-950/20 shadow-2xl ring-1 ring-black/50 backdrop-blur-xl transition-all">
+        <div className="flex h-full max-h-[90%] w-4/5 flex-col overflow-hidden rounded-sm border border-white/10 bg-slate-950/20 shadow-2xl ring-1 ring-black/50 backdrop-blur-xl transition-all">
           <ItemList items={projectList} />
         </div>
       </div>
@@ -276,7 +276,7 @@ function SideB() {
                       />
                       Cronograma
                     </h3>
-                    <div className="rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                    <div className="rounded-sm border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
                       <DetailRow
                         label="Início"
                         value={
@@ -317,7 +317,7 @@ function SideB() {
                       />
                       Aparência
                     </h3>
-                    <div className="space-y-4 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                    <div className="space-y-4 rounded-sm border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
                       <DetailRow
                         label="Tema"
                         value={projectdata.settings.Styles.selectedTheme}
@@ -328,7 +328,7 @@ function SideB() {
                           <span className="mb-2 block text-xs text-slate-400">
                             Imagem de Fundo
                           </span>
-                          <div className="relative h-32 w-full overflow-hidden rounded-lg border border-white/10">
+                          <div className="relative h-32 w-full overflow-hidden rounded-sm border border-white/10">
                             <img
                               src={
                                 projectdata.settings.Styles.backgroundImageUrl
@@ -353,7 +353,7 @@ function SideB() {
                       Configurações
                     </h3>
                     <div className="grid grid-cols-2 gap-3">
-                      <div className="rounded-lg border border-white/10 bg-white/5 p-3 text-center">
+                      <div className="rounded-sm border border-white/10 bg-white/5 p-3 text-center">
                         <span className="mb-1 block text-xs text-slate-400">
                           Dígitos
                         </span>
@@ -361,7 +361,7 @@ function SideB() {
                           {projectdata.settings.Settings.digitsShown}
                         </span>
                       </div>
-                      <div className="rounded-lg border border-white/10 bg-white/5 p-3 text-center">
+                      <div className="rounded-sm border border-white/10 bg-white/5 p-3 text-center">
                         <span className="mb-1 block text-xs text-slate-400">
                           Segundos
                         </span>
@@ -386,14 +386,14 @@ function SideB() {
               <div className="flex gap-3">
                 <button
                   onClick={() => changeTab('TabEditItem')}
-                  className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-blue-600 py-3 font-medium text-white shadow-lg shadow-blue-900/20 transition-all hover:bg-blue-500"
+                  className="flex flex-1 items-center justify-center gap-2 rounded-sm bg-blue-600 py-3 font-medium text-white shadow-lg shadow-blue-900/20 transition-all hover:bg-blue-500"
                 >
                   <Icon icon="mdi:pencil" />
                   Editar Projeto
                 </button>
                 <button
                   onClick={() => navigate(`/pub/${selecionado}`)}
-                  className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/10 px-4 py-3 font-medium text-white transition-all hover:bg-white/20"
+                  className="flex items-center justify-center gap-2 rounded-sm border border-white/10 bg-white/10 px-4 py-3 font-medium text-white transition-all hover:bg-white/20"
                   title="Visualizar"
                 >
                   <Icon icon="mdi:eye" />
@@ -418,7 +418,7 @@ function SideB() {
             </p>
             <button
               onClick={() => changeTab('TabCreateItem')}
-              className="flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-200"
+              className="flex items-center gap-2 rounded-sm bg-white px-6 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-200"
             >
               <Icon icon="mdi:plus" />
               Criar Novo Projeto
@@ -432,7 +432,7 @@ function SideB() {
 export default function TabExplorerContainer() {
   return (
     <div className="size-full overflow-hidden bg-black p-0">
-      <div className="flex size-full overflow-hidden rounded-xl bg-transparent shadow-inner">
+      <div className="flex size-full overflow-hidden rounded-sm bg-transparent shadow-inner">
         <SideA />
         <SideB />
       </div>
