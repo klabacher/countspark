@@ -9,7 +9,22 @@ import {
 import { updateProjectList } from 'Providers/ReduxProvider/LogicStore'
 import LogicProvider from 'Providers/LogicProvider'
 import { ProjectItem } from 'Types/LogicStoreType'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import { format } from 'date-fns'
+
+import type { LogicStoreSettingsType } from 'Types/LogicStoreType'
+
+type ProjectData = {
+  id: string
+  user_id: string
+  created_at: string
+  updated_at: string
+  settings: LogicStoreSettingsType
+  title: string
+  status: StatusType
+  date_update: string
+}
 
 // Tipos mantidos para consistência
 type StatusType = 'online' | 'offline' | 'busy'
@@ -64,7 +79,7 @@ const Item = ({ title, id, status, date_update }: ProjectItem) => {
             </span>
             <span className="text-[10px] text-slate-600">•</span>
             <span className="text-[10px] text-slate-500">
-              Atualizado: {date_update}
+              Atualizado: {format(new Date(date_update), 'dd/MM/yyyy HH:mm')}
             </span>
           </div>
         </div>
@@ -138,7 +153,7 @@ function SideA() {
       <div className="relative z-10 flex size-full items-center justify-center p-4 sm:p-6">
         <div
           id="sdsajkdjhsd"
-          className="flex h-[65vh] w-4/5 flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-950/20 shadow-2xl ring-1 ring-black/50 backdrop-blur-xl transition-all"
+          className="flex h-full max-h-[90%] w-4/5 flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-950/20 shadow-2xl ring-1 ring-black/50 backdrop-blur-xl transition-all"
         >
           <ItemList items={projectList} />
         </div>
@@ -149,6 +164,8 @@ function SideA() {
 
 function SideB() {
   const dispatch = useDispatch<AppDispatch>()
+  const [projectdata, setProjectData] = useState<ProjectData | null>(null)
+  const [loading, setLoading] = useState(false)
 
   const selecionado = useSelector(
     (state: RootState) => state.dom.PageInfo.DashboardPage.selectedItemId
@@ -161,54 +178,253 @@ function SideB() {
     dispatch(updateSettingsTabState(tab))
   }
 
+  useEffect(() => {
+    const fetchProjectDetails = async () => {
+      if (selecionado) {
+        setLoading(true)
+        const result = await LogicProvider.fetchCounterData(selecionado)
+        if (result.success) {
+          console.log('Fetched project data:', result.data)
+          setProjectData(result.data)
+        }
+        setLoading(false)
+      } else {
+        setProjectData(null)
+      }
+    }
+    fetchProjectDetails()
+  }, [selecionado])
+
+  // Helper for detail rows
+  const DetailRow = ({
+    label,
+    value
+  }: {
+    label: string
+    value: React.ReactNode
+  }) => (
+    <div className="flex justify-between py-2 text-sm">
+      <span className="text-slate-400">{label}</span>
+      <span className="text-right font-medium text-slate-200">{value}</span>
+    </div>
+  )
+
   return (
-    <div className="relative flex h-full w-1/2 flex-col items-center justify-center bg-slate-950 text-white">
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-      <div className="z-10">
+    <div className="relative flex h-full w-1/2 flex-col overflow-hidden bg-slate-950 text-white">
+      {/* Background Noise & Gradient */}
+      <div className="pointer-events-none absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/50 to-slate-950/90"></div>
+
+      <div className="z-10 flex h-full flex-col">
         {selecionado ? (
-          <div className="flex flex-col items-center gap-4">
-            <h2 className="text-2xl font-bold">
-              Detalhes do Projeto #{String(selecionado).slice(0, 8)}
-            </h2>
-            <hr className="h-0.5 w-full" />
-            <p className="text-sm text-slate-400">
-              Aqui você pode ver e editar os detalhes do projeto selecionado.
-            </p>
-            <div className="flex flex-row gap-1">
-              <div
-                onClick={() => {
-                  changeTab('TabEditItem')
-                }}
-                className="mt-4 flex cursor-pointer items-center gap-2 rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+          <>
+            {/* Header Fixed */}
+            <div className="flex-none p-8 pb-4">
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-start justify-between"
               >
-                <span>Editar</span>
-                <Icon icon="mdi:pencil" />
-              </div>
-              <div
-                onClick={() => {
-                  selectProject(null)
-                }}
-                className="mt-4 flex cursor-pointer items-center gap-2 rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
-              >
-                <span>Retornar</span>
-                <Icon icon="mdi:exit-to-app" />
+                <div>
+                  <div className="mb-2 flex items-center gap-2">
+                    <span className="rounded-full border border-blue-500/20 bg-blue-500/10 px-2 py-0.5 font-mono text-[10px] text-blue-400">
+                      #{String(selecionado).slice(0, 8)}
+                    </span>
+                  </div>
+                  <h2 className="text-3xl font-bold tracking-tight text-white">
+                    {projectdata?.settings.Texts?.title || 'Sem Título'}
+                  </h2>
+                </div>
+                <button
+                  onClick={() => selectProject(null)}
+                  className="rounded-full p-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-white"
+                >
+                  <Icon icon="mdi:close" className="text-xl" />
+                </button>
+              </motion.div>
+            </div>
+
+            {/* Scrollable Content */}
+            <div className="scrollbar-custom flex-1 overflow-y-auto px-8 py-2">
+              {loading ? (
+                <div className="flex h-full items-center justify-center">
+                  <Icon
+                    icon="mdi:loading"
+                    className="animate-spin text-3xl text-blue-500"
+                  />
+                </div>
+              ) : projectdata ? (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="space-y-8 pb-8"
+                >
+                  {/* Description */}
+                  {projectdata.settings.Texts.description && (
+                    <div className="leading-relaxed text-slate-400">
+                      {projectdata.settings.Texts.description}
+                    </div>
+                  )}
+
+                  <hr className="border-white/10" />
+
+                  {/* Timing Section */}
+                  <section>
+                    <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-white">
+                      <Icon
+                        icon="mdi:clock-outline"
+                        className="text-blue-400"
+                      />
+                      Cronograma
+                    </h3>
+                    <div className="rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                      <DetailRow
+                        label="Início"
+                        value={
+                          projectdata.settings.Timing.startDate
+                            ? format(
+                                new Date(projectdata.settings.Timing.startDate),
+                                'dd/MM/yyyy HH:mm'
+                              )
+                            : '-'
+                        }
+                      />
+                      <div className="my-1 h-px bg-white/5" />
+                      <DetailRow
+                        label="Término"
+                        value={
+                          projectdata.settings.Timing.endDate
+                            ? format(
+                                new Date(projectdata.settings.Timing.endDate),
+                                'dd/MM/yyyy HH:mm'
+                              )
+                            : '-'
+                        }
+                      />
+                      <div className="my-1 h-px bg-white/5" />
+                      <DetailRow
+                        label="Fuso Horário"
+                        value={projectdata.settings.Settings.timezone}
+                      />
+                    </div>
+                  </section>
+
+                  {/* Visuals Section */}
+                  <section>
+                    <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-white">
+                      <Icon
+                        icon="mdi:palette-outline"
+                        className="text-purple-400"
+                      />
+                      Aparência
+                    </h3>
+                    <div className="space-y-4 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                      <DetailRow
+                        label="Tema"
+                        value={projectdata.settings.Styles.selectedTheme}
+                      />
+
+                      {projectdata.settings.Styles.backgroundImageUrl && (
+                        <div className="mt-4">
+                          <span className="mb-2 block text-xs text-slate-400">
+                            Imagem de Fundo
+                          </span>
+                          <div className="relative h-32 w-full overflow-hidden rounded-lg border border-white/10">
+                            <img
+                              src={
+                                projectdata.settings.Styles.backgroundImageUrl
+                              }
+                              alt="Background"
+                              className="size-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-black/20" />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </section>
+
+                  {/* Settings Section */}
+                  <section>
+                    <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-white">
+                      <Icon
+                        icon="mdi:cog-outline"
+                        className="text-emerald-400"
+                      />
+                      Configurações
+                    </h3>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="rounded-lg border border-white/10 bg-white/5 p-3 text-center">
+                        <span className="mb-1 block text-xs text-slate-400">
+                          Dígitos
+                        </span>
+                        <span className="font-medium capitalize text-slate-200">
+                          {projectdata.settings.Settings.digitsShown}
+                        </span>
+                      </div>
+                      <div className="rounded-lg border border-white/10 bg-white/5 p-3 text-center">
+                        <span className="mb-1 block text-xs text-slate-400">
+                          Segundos
+                        </span>
+                        <span className="font-medium text-slate-200">
+                          {projectdata.settings.Settings.showSeconds
+                            ? 'Visíveis'
+                            : 'Ocultos'}
+                        </span>
+                      </div>
+                    </div>
+                  </section>
+                </motion.div>
+              ) : (
+                <div className="mt-20 text-center text-slate-500">
+                  Não foi possível carregar os dados do projeto.
+                </div>
+              )}
+            </div>
+
+            {/* Footer Actions */}
+            <div className="flex-none border-t border-white/10 bg-slate-900/50 p-6 backdrop-blur-md">
+              <div className="flex gap-3">
+                <button
+                  onClick={() => changeTab('TabEditItem')}
+                  className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-blue-600 py-3 font-medium text-white shadow-lg shadow-blue-900/20 transition-all hover:bg-blue-500"
+                >
+                  <Icon icon="mdi:pencil" />
+                  Editar Projeto
+                </button>
+                <button
+                  onClick={() =>
+                    window.open(`/preview/${selecionado}`, '_blank')
+                  }
+                  className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/10 px-4 py-3 font-medium text-white transition-all hover:bg-white/20"
+                  title="Visualizar"
+                >
+                  <Icon icon="mdi:eye" />
+                </button>
               </div>
             </div>
-            {/* Adicione mais detalhes e funcionalidades conforme necessário */}
-          </div>
+          </>
         ) : (
-          <div className="flex flex-col items-center gap-4">
-            <h2 className="text-2xl font-bold">Nenhum Projeto Selecionado</h2>
-            <hr className="h-0.5 w-full" />
-            <p className="text-sm text-slate-400">
-              Por favor, selecione um projeto na lista à esquerda para ver os
-              detalhes. Ou Crie um novo:
+          <div className="flex h-full flex-col items-center justify-center p-8 text-center">
+            <div className="mb-6 rounded-full bg-white/5 p-6 ring-1 ring-white/10">
+              <Icon
+                icon="mdi:cursor-default-click-outline"
+                className="text-4xl text-slate-500"
+              />
+            </div>
+            <h2 className="mb-2 text-xl font-bold text-white">
+              Nenhum Projeto Selecionado
+            </h2>
+            <p className="mx-auto mb-8 max-w-xs text-slate-400">
+              Selecione um projeto na lista ao lado para ver os detalhes ou crie
+              um novo contador.
             </p>
             <button
               onClick={() => changeTab('TabCreateItem')}
-              className="mt-2 rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+              className="flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-200"
             >
-              Novo Projeto
+              <Icon icon="mdi:plus" />
+              Criar Novo Projeto
             </button>
           </div>
         )}
@@ -216,11 +432,10 @@ function SideB() {
     </div>
   )
 }
-
 export default function TabExplorerContainer() {
   return (
-    <div className="h-screen w-screen overflow-hidden bg-black p-0">
-      <div className="flex h-screen w-screen overflow-hidden rounded-xl bg-transparent shadow-inner">
+    <div className="size-full overflow-hidden bg-black p-0">
+      <div className="flex size-full overflow-hidden rounded-xl bg-transparent shadow-inner">
         <SideA />
         <SideB />
       </div>

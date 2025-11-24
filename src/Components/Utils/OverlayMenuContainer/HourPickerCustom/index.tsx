@@ -6,11 +6,16 @@ import { updateSettings } from 'Providers/ReduxProvider/LogicStore'
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { formatForDatetimeLocal, zonedDatetimeLocalToUtcMs } from 'Utils'
+import { LogicStoreSettingsType } from 'Types/LogicStoreType'
 
 export default function HourPickerCustom({
   handleOverlayToggle
 }: {
-  handleOverlayToggle: () => void
+  handleOverlayToggle?: () => void
+  projectdata?: LogicStoreSettingsType | null
+  setTimeFC?: React.Dispatch<
+    React.SetStateAction<LogicStoreSettingsType | null>
+  >
 }) {
   const dispatch = useDispatch<AppDispatch>()
   const { Timing, Settings } = useSelector(
@@ -53,7 +58,9 @@ export default function HourPickerCustom({
         className="mt-4 flex border-spacing-1 flex-row items-center justify-center rounded bg-blue-500 px-4 py-2 font-mono text-white hover:bg-blue-600"
         onClick={() => {
           handleTiming(inputValue)
-          handleOverlayToggle()
+          if (handleOverlayToggle) {
+            handleOverlayToggle()
+          }
         }}
         type="submit"
       >

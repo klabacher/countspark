@@ -11,7 +11,7 @@ export default function DashboardMenu() {
   )
   return (
     <>
-      <div className="flex h-screen w-screen flex-row">
+      <div className="flex size-full flex-row">
         {/* TODO: add new sucess box for changes */}
         {tabSelected === 'TabExplorerMenu' && <TabExplorerMenu />}
         {tabSelected === 'TabCreateItem' && (

@@ -1,3 +1,5 @@
+// TODO: add import { MergeDeep } from 'type-fest'; for better handling/typing of nested objects/jsonb fields pgjson_schema on supabase as extension
+
 import { createClient } from '@supabase/supabase-js'
 import { Database } from 'Types/SupabaseTypes'
 

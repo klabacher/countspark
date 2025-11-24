@@ -1,3 +1,4 @@
+// Change id or to number or uuid based on your auth system
 export type UserProfile = {
   id: string
   email: string | undefined
@@ -20,7 +21,7 @@ type FrontPage = {
 type DashboardPage = {
   state: 'preview' | 'settings' | 'analytics'
   SettingsTab: 'TabExplorerMenu' | 'TabCreateItem' | 'TabEditItem'
-  selectedItemId?: number | null
+  selectedItemId?: string | null
 }
 
 type PageInfo = {

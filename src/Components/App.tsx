@@ -37,6 +37,7 @@ function PublicRoute({ children }: { children: JSX.Element }) {
   return children
 }
 
+// add option for easy path for projects, instead of an uid keeping it only for development purposes
 function RoutesContainer() {
   return (
     <Routes>

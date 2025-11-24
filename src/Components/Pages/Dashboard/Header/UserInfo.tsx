@@ -15,22 +15,35 @@ export default function UserInfo() {
   )
 
   return (
-    <div className="flex flex-row border border-slate-200 bg-white/80 px-6 py-4 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/80">
-      <div className="mr-4 flex items-center gap-2 text-slate-200">
-        <Icon icon="mdi:account-circle" className="text-3xl" />
-        <span className="text-2xl font-medium">
-          {t('hud.HomePage.hello')}, {userName}
-        </span>
+    <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 rounded-full border border-slate-200 bg-slate-50/50 py-1.5 pl-1.5 pr-4 backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+        <div className="flex size-8 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/20">
+          <Icon icon="mdi:account" className="text-lg" />
+        </div>
+        <div className="flex flex-col">
+          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
+            {t('hud.HomePage.hello')}
+          </span>
+          <span className="text-sm font-semibold leading-none text-slate-900 dark:text-white">
+            {userName || 'User'}
+          </span>
+        </div>
       </div>
+
+      <div className="h-8 w-px bg-slate-200 dark:bg-white/10" />
+
       <button
         onClick={async () => {
           await AuthProvider.LogoutLogic()
           navigate('/')
         }}
-        className="flex items-center gap-2 rounded-md bg-red-500/10 px-2 py-1 text-lg font-medium text-red-400 transition-colors hover:bg-red-500/20 hover:text-red-300"
+        className="group flex size-9 items-center justify-center rounded-full border border-transparent text-slate-400 transition-all hover:border-red-500/20 hover:bg-red-500/10 hover:text-red-500"
+        title={t('hud.HomePage.logout')}
       >
-        <Icon icon="mdi:logout" />
-        {t('hud.HomePage.logout')}
+        <Icon
+          icon="mdi:logout"
+          className="text-xl transition-transform group-hover:-translate-x-0.5"
+        />
       </button>
     </div>
   )

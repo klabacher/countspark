@@ -16,11 +16,13 @@ function DashboardContainer() {
   )
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-green-50 p-0">
+    <div className="flex h-screen w-screen flex-col overflow-hidden bg-green-50 p-0 dark:bg-slate-950">
       <Header />
-      {state === 'preview' && <PreviewPage />}
-      {state === 'settings' && <DashboardMenu />}
-      {state === 'analytics' && <AnalyticsPage />}
+      <div className="flex-1 overflow-hidden">
+        {state === 'preview' && <PreviewPage />}
+        {state === 'settings' && <DashboardMenu />}
+        {state === 'analytics' && <AnalyticsPage />}
+      </div>
     </div>
   )
 }
