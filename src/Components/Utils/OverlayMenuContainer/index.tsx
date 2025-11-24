@@ -17,7 +17,7 @@ function Menu({ handleOverlayToggle }: { handleOverlayToggle: () => void }) {
       </h2>
       <button
         onClick={() => handleOverlayToggle()}
-        className="rounded bg-transparent px-2 py-1 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+        className="rounded bg-transparent px-2 py-1 text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
       >
         <Icon
           icon="material-symbols:close-small-rounded"
@@ -38,16 +38,16 @@ function Container({
     <div className="flex size-full flex-col items-stretch gap-4">
       <Menu handleOverlayToggle={handleOverlayToggle} />
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <div className="rounded-sm border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900">
           <HourPickerCustom handleOverlayToggle={handleOverlayToggle} />
         </div>
-        <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <div className="rounded-sm border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900">
           <TimezoneSelect />
         </div>
-        <div className="col-span-2 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <div className="col-span-2 rounded-sm border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900">
           <ImageUrlPicker handleOverlayToggle={handleOverlayToggle} />
         </div>
-        {/* <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        {/* <div className="rounded-sm border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900">
           <TimezoneSelect />
         </div> */}
       </div>
@@ -65,8 +65,8 @@ export default function OverlayMenuContainer() {
 
   return (
     <div>
-      <div className="absolute inset-0 flex items-center justify-center bg-black/50 p-4">
-        <div className="flex w-full max-w-3xl flex-col rounded-lg bg-white p-6 shadow-xl dark:bg-gray-950">
+      <div className="absolute inset-0 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
+        <div className="flex w-full max-w-3xl flex-col rounded-sm border border-white/10 bg-white/95 p-6 shadow-xl backdrop-blur-md dark:bg-slate-950/95">
           <Container handleOverlayToggle={handleOverlayToggle} />
         </div>
       </div>

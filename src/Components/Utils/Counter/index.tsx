@@ -44,7 +44,7 @@ export function Buttons({
             <a
               key={index}
               href={button.link ? button.link : '#'}
-              className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+              className="rounded-sm border border-blue-500/20 bg-blue-600 px-4 py-2 text-white shadow-lg transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:bg-blue-700 hover:shadow-blue-500/25"
             >
               {button.label}
             </a>

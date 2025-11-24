@@ -78,13 +78,13 @@ export default function TimezoneSelect() {
     <div className="flex size-full flex-col gap-2">
       <label
         htmlFor="timezoneSelect"
-        className="text-sm font-medium text-gray-700 dark:text-gray-200"
+        className="text-sm font-medium text-slate-700 dark:text-slate-200"
       >
         {t('hud.timezoneSelect.label')}
       </label>
       <select
         id="timezoneSelect"
-        className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm outline-none ring-sky-500 focus:border-sky-500 focus:ring-2 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100"
+        className="w-full rounded-sm border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none ring-indigo-500 focus:border-indigo-500 focus:ring-2 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
         value={storeSettings.Settings.timezone}
         onChange={(el) => {
           handleSettingsTimezone(el.target.value)
@@ -99,7 +99,7 @@ export default function TimezoneSelect() {
       <div className="m-1 flex flex-row items-center justify-center">
         <label
           htmlFor="secondsCheckbox"
-          className="text-sm font-medium text-gray-700 dark:text-gray-200"
+          className="text-sm font-medium text-slate-700 dark:text-slate-200"
         >
           Show Seconds:
         </label>
@@ -115,13 +115,13 @@ export default function TimezoneSelect() {
       <div className="m-1 flex flex-row items-center justify-center">
         <label
           htmlFor="timezoneSelect"
-          className="text-sm font-medium text-gray-700 dark:text-gray-200"
+          className="text-sm font-medium text-slate-700 dark:text-slate-200"
         >
           {t('hud.languageSelect.label')}
         </label>
         <select
           id="languageSelect"
-          className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm outline-none ring-sky-500 focus:border-sky-500 focus:ring-2 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100"
+          className="w-full rounded-sm border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none ring-indigo-500 focus:border-indigo-500 focus:ring-2 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
           value={language}
           onChange={(el) => {
             setLanguage(el.target.value)

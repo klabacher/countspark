@@ -10,7 +10,7 @@ export default function TabMenuContainer({
   if (action === 'NewItem') {
     return (
       <div className="h-screen w-screen overflow-hidden bg-black p-0">
-        <div className="flex h-screen w-screen overflow-hidden rounded-xl bg-transparent shadow-inner">
+        <div className="flex h-screen w-screen overflow-hidden rounded-sm bg-transparent shadow-inner">
           <PreviewResults />
           <EditProject action="NewItem" />
         </div>
@@ -19,7 +19,7 @@ export default function TabMenuContainer({
   } else if (action === 'EditItem') {
     return (
       <div className="h-screen w-screen overflow-hidden bg-black p-0">
-        <div className="flex h-screen w-screen overflow-hidden rounded-xl bg-transparent shadow-inner">
+        <div className="flex h-screen w-screen overflow-hidden rounded-sm bg-transparent shadow-inner">
           <PreviewResults />
           <EditProject action="EditItem" />
         </div>

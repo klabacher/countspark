@@ -46,7 +46,7 @@ function Menu({ onClose }: { onClose: () => void }) {
       ref={ref}
       role="menu"
       aria-label={t('hud.languageSelect.label')}
-      className="mt-2 w-56 rounded-lg bg-white/95 p-3 shadow-lg ring-1 ring-black/5 backdrop-blur-sm dark:bg-gray-900/95"
+      className="mt-2 w-56 rounded-sm border border-slate-200 bg-white/95 p-3 shadow-lg backdrop-blur-md dark:border-white/10 dark:bg-slate-900/95"
     >
       <div className="mb-2 flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -75,7 +75,7 @@ function Menu({ onClose }: { onClose: () => void }) {
           setLanguage(e.target.value)
           changeLanguage(e.target.value)
         }}
-        className="w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm outline-none focus:ring-2 focus:ring-sky-400 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+        className="w-full rounded-sm border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm outline-none transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] focus:ring-2 focus:ring-indigo-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
       >
         {languages.map((lang) => (
           <option key={lang} value={lang}>
@@ -113,7 +113,7 @@ export default function LangSelector() {
         aria-expanded={open}
         aria-label={t('hud.languageSelect.open') ?? 'Open language selector'}
         onClick={() => setOpen((s) => !s)}
-        className="flex items-center gap-2 rounded-full bg-white/90 px-3 py-2 shadow-md ring-1 ring-white/5 transition-transform hover:scale-[1.03] dark:bg-gray-900/90"
+        className="flex items-center gap-2 rounded-sm border border-slate-200 bg-white/90 px-3 py-2 shadow-md backdrop-blur-md transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:bg-white dark:border-white/10 dark:bg-slate-900/90 dark:hover:bg-slate-900"
       >
         <Icon
           className="text-zinc-300"

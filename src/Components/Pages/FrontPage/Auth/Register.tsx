@@ -30,7 +30,7 @@ export default function RegisterPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <div className="rounded-sm border border-slate-200 bg-white/80 p-6 shadow-xl backdrop-blur-md dark:border-white/10 dark:bg-slate-900/80">
         <div className="mb-6 text-center">
           <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
             {t('hud.AuthPage.Header.registerTitle')}
@@ -41,11 +41,11 @@ export default function RegisterPage() {
         </div>
 
         <div className="grid grid-cols-2 gap-3">
-          <button className="flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white">
+          <button className="flex items-center justify-center gap-2 rounded-sm border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:bg-slate-50 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white">
             <Icon icon="logos:google-icon" className="text-lg" />
             {t('hud.AuthPage.RegisterForm.google')}
           </button>
-          <button className="flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white">
+          <button className="flex items-center justify-center gap-2 rounded-sm border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:bg-slate-50 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white">
             <Icon icon="mdi:github" className="text-lg" />
             {t('hud.AuthPage.RegisterForm.github')}
           </button>
@@ -75,7 +75,7 @@ export default function RegisterPage() {
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent px-3 py-2 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900"
+              className="flex h-10 w-full rounded-sm border border-slate-300 bg-transparent px-3 py-2 text-sm transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-indigo-500 dark:focus:ring-offset-slate-900"
               placeholder={t('hud.AuthPage.RegisterForm.namePlaceholder')}
             />
           </div>
@@ -91,7 +91,7 @@ export default function RegisterPage() {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent px-3 py-2 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900"
+              className="flex h-10 w-full rounded-sm border border-slate-300 bg-transparent px-3 py-2 text-sm transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-indigo-500 dark:focus:ring-offset-slate-900"
               placeholder={t('hud.AuthPage.RegisterForm.emailPlaceholder')}
             />
           </div>
@@ -108,12 +108,12 @@ export default function RegisterPage() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent px-3 py-2 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900"
+                className="flex h-10 w-full rounded-sm border border-slate-300 bg-transparent px-3 py-2 text-sm transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-indigo-500 dark:focus:ring-offset-slate-900"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 transition-colors duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
               >
                 <Icon
                   icon={showPassword ? 'mdi:eye-off' : 'mdi:eye'}
@@ -128,7 +128,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="inline-flex h-10 w-full items-center justify-center rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-slate-50 transition-colors hover:bg-slate-900/90 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/90 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900"
+            className="inline-flex h-10 w-full items-center justify-center rounded-sm border border-indigo-500/20 bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-lg transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:bg-indigo-700 hover:shadow-indigo-500/25 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:focus:ring-offset-slate-900"
           >
             {isLoading ? (
               <Icon icon="eos-icons:loading" className="animate-spin text-xl" />

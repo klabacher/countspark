@@ -32,7 +32,7 @@ function BodyMenu() {
     <div className="relative flex size-full flex-col items-center justify-center gap-6 p-4">
       {/* TODO: review this style and fitting */}
       {isAuthenticated && user && (
-        <div className="absolute right-4 top-4 flex items-center gap-4 rounded-lg bg-slate-900/50 p-2 backdrop-blur-sm">
+        <div className="absolute right-4 top-4 flex items-center gap-4 rounded-sm border border-white/10 bg-slate-900/80 p-2 backdrop-blur-md">
           <div className="flex items-center gap-2 text-slate-200">
             <Icon icon="mdi:account-circle" className="text-3xl" />
             <span className="text-2xl font-medium">
@@ -44,7 +44,7 @@ function BodyMenu() {
               await AuthProvider.LogoutLogic()
               navigate('/')
             }}
-            className="flex items-center gap-1 rounded-md bg-red-500/10 px-2 py-1 text-lg font-medium text-red-400 transition-colors hover:bg-red-500/20 hover:text-red-300"
+            className="flex items-center gap-1 rounded-sm bg-red-500/10 px-2 py-1 text-lg font-medium text-red-400 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:bg-red-500/20 hover:text-red-300"
           >
             <Icon icon="mdi:logout" />
             {t('hud.HomePage.logout')}
@@ -53,7 +53,7 @@ function BodyMenu() {
       )}
 
       {/* Logo Container */}
-      <div className="relative flex size-auto items-center justify-center rounded-3xl border border-slate-800 bg-slate-900/50 p-8 shadow-2xl backdrop-blur-sm">
+      <div className="relative flex size-auto items-center justify-center rounded-sm border border-slate-800 bg-slate-900/50 p-8 shadow-2xl backdrop-blur-sm">
         <div
           className="absolute inset-0 opacity-20"
           style={{
@@ -96,26 +96,24 @@ function BodyMenu() {
             {isAuthenticated ? (
               <button
                 onClick={() => navigate('/dashboard')}
-                className="group relative flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-2 font-mono text-sm font-bold text-white shadow-lg transition-all hover:scale-105 hover:shadow-indigo-500/25 active:scale-95"
+                className="group relative flex w-full items-center justify-center gap-2 rounded-sm border border-indigo-500/20 bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-2 font-mono text-sm font-bold text-white shadow-lg transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:from-indigo-700 hover:to-purple-700 hover:shadow-indigo-500/25 active:scale-95"
               >
                 <Icon icon="mdi:view-dashboard" className="text-lg" />
                 {t('hud.HomePage.letsCreate')}
-                <div className="absolute inset-0 rounded-lg bg-white/20 opacity-0 transition-opacity group-hover:opacity-100" />
               </button>
             ) : (
               <>
                 <button
                   onClick={() => setSelectedDiv('auth:login')}
-                  className="group relative flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-amber-500 to-orange-600 px-4 py-2 font-mono text-sm font-bold text-white shadow-lg transition-all hover:scale-105 hover:shadow-orange-500/25 active:scale-95"
+                  className="group relative flex w-full items-center justify-center gap-2 rounded-sm border border-amber-500/20 bg-gradient-to-r from-amber-600 to-orange-600 px-4 py-2 font-mono text-sm font-bold text-white shadow-lg transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:from-amber-700 hover:to-orange-700 hover:shadow-orange-500/25 active:scale-95"
                 >
                   <Icon icon="mdi:login" className="text-lg" />
                   {t('hud.HomePage.loginButton')}
-                  <div className="absolute inset-0 rounded-lg bg-white/20 opacity-0 transition-opacity group-hover:opacity-100" />
                 </button>
 
                 <button
                   onClick={() => setSelectedDiv('auth:register')}
-                  className="group flex w-full items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-800/50 px-4 py-2 font-mono text-sm font-bold text-slate-300 transition-all hover:bg-slate-800 hover:text-white active:scale-95"
+                  className="group flex w-full items-center justify-center gap-2 rounded-sm border border-slate-700 bg-slate-800/50 px-4 py-2 font-mono text-sm font-bold text-slate-300 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:bg-slate-800 hover:text-white active:scale-95"
                 >
                   <Icon icon="mdi:account-plus" className="text-lg" />
                   {t('hud.HomePage.signupButton')}

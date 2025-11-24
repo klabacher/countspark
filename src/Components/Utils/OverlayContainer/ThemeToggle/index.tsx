@@ -11,13 +11,13 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => dispatch(toggleTheme())}
-      className="relative flex h-9 w-16 items-center rounded-full bg-slate-200 p-1 shadow-inner transition-colors dark:bg-slate-800"
+      className="relative flex h-9 w-16 items-center rounded-sm bg-slate-200 p-1 shadow-inner transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] dark:bg-slate-800"
       title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >
       <motion.div
-        className="flex size-7 items-center justify-center rounded-full bg-white shadow-md dark:bg-slate-950"
+        className="flex size-7 items-center justify-center rounded-sm bg-white shadow-md dark:bg-slate-950"
         layout
-        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+        transition={{ ease: 'circOut', duration: 0.3 }}
         animate={{
           x: theme === 'dark' ? 28 : 0
         }}
