@@ -77,7 +77,7 @@ export default function LoginPage() {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`flex h-10 w-full rounded-sm border bg-transparent px-3 py-2 text-sm placeholder:text-slate-400 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:text-slate-50 dark:focus:ring-offset-slate-900 ${
+              className={`flex h-10 w-full rounded-sm border bg-transparent px-3 py-2 text-sm transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:text-slate-50 dark:focus:ring-offset-slate-900 ${
                 errorState
                   ? 'border-red-500 focus:ring-red-500 dark:border-red-500'
                   : 'border-slate-300 focus:ring-indigo-500 dark:border-slate-700 dark:focus:ring-indigo-500'
@@ -111,7 +111,7 @@ export default function LoginPage() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className={`flex h-10 w-full rounded-sm border bg-transparent px-3 py-2 text-sm placeholder:text-slate-400 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:text-slate-50 dark:focus:ring-offset-slate-900 ${
+                className={`flex h-10 w-full rounded-sm border bg-transparent px-3 py-2 text-sm transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:text-slate-50 dark:focus:ring-offset-slate-900 ${
                   errorState
                     ? 'border-red-500 focus:ring-red-500 dark:border-red-500'
                     : 'border-slate-300 focus:ring-indigo-500 dark:border-slate-700 dark:focus:ring-indigo-500'

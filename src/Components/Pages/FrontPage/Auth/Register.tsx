@@ -75,7 +75,7 @@ export default function RegisterPage() {
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="flex h-10 w-full rounded-sm border border-slate-300 bg-transparent px-3 py-2 text-sm placeholder:text-slate-400 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-indigo-500 dark:focus:ring-offset-slate-900"
+              className="flex h-10 w-full rounded-sm border border-slate-300 bg-transparent px-3 py-2 text-sm transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-indigo-500 dark:focus:ring-offset-slate-900"
               placeholder={t('hud.AuthPage.RegisterForm.namePlaceholder')}
             />
           </div>
@@ -91,7 +91,7 @@ export default function RegisterPage() {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex h-10 w-full rounded-sm border border-slate-300 bg-transparent px-3 py-2 text-sm placeholder:text-slate-400 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-indigo-500 dark:focus:ring-offset-slate-900"
+              className="flex h-10 w-full rounded-sm border border-slate-300 bg-transparent px-3 py-2 text-sm transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-indigo-500 dark:focus:ring-offset-slate-900"
               placeholder={t('hud.AuthPage.RegisterForm.emailPlaceholder')}
             />
           </div>
@@ -108,7 +108,7 @@ export default function RegisterPage() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="flex h-10 w-full rounded-sm border border-slate-300 bg-transparent px-3 py-2 text-sm placeholder:text-slate-400 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-indigo-500 dark:focus:ring-offset-slate-900"
+                className="flex h-10 w-full rounded-sm border border-slate-300 bg-transparent px-3 py-2 text-sm transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-indigo-500 dark:focus:ring-offset-slate-900"
               />
               <button
                 type="button"

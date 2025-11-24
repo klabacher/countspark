@@ -34,14 +34,14 @@ export default function HourPickerCustom({
     <div className="flex size-full flex-col gap-2">
       <label
         htmlFor="inputField"
-        className="text-sm font-medium text-gray-700 dark:text-gray-200"
+        className="text-sm font-medium text-slate-700 dark:text-slate-200"
       >
         {t('hud.imageUrlPicker.label')}
       </label>
       <input
         type="url"
         id="inputField"
-        className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm outline-none ring-sky-500 placeholder:text-gray-400 focus:border-sky-500 focus:ring-2 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100"
+        className="w-full rounded-sm border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none ring-indigo-500 placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
         placeholder="https://picsum.photos"
         value={inputValue}
         onChange={(el) => {
@@ -63,7 +63,7 @@ export default function HourPickerCustom({
           height="24"
         />
       </button>
-      <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
         {t('hud.imageUrlPicker.placeholderExample')}
       </div>
     </div>

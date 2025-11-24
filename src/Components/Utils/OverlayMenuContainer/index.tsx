@@ -17,7 +17,7 @@ function Menu({ handleOverlayToggle }: { handleOverlayToggle: () => void }) {
       </h2>
       <button
         onClick={() => handleOverlayToggle()}
-        className="rounded bg-transparent px-2 py-1 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+        className="rounded bg-transparent px-2 py-1 text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
       >
         <Icon
           icon="material-symbols:close-small-rounded"
