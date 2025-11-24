@@ -4,7 +4,7 @@ import { UserProfile } from 'Types/DOMStateType'
 
 // Default initial state
 const initialState: initialStateType = {
-  selectedStyleMode: 'dark',
+  theme: 'dark',
   overlayVisible: false,
   AuthInfo: {
     isAuthenticated: false,
@@ -70,8 +70,7 @@ export const reduxSlice = createSlice({
     },
     // Theme reducer
     toggleTheme(state) {
-      state.selectedStyleMode =
-        state.selectedStyleMode === 'dark' ? 'light' : 'dark'
+      state.theme = state.theme === 'dark' ? 'light' : 'dark'
     }
   }
 })

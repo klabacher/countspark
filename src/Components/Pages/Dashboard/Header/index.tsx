@@ -17,9 +17,7 @@ export default function HeaderMenu() {
   const DashboardState = useSelector(
     (state: RootState) => state.dom.PageInfo.DashboardPage.state
   )
-  const themeMode = useSelector(
-    (state: RootState) => state.dom.selectedStyleMode
-  )
+  const themeMode = useSelector((state: RootState) => state.dom.theme)
 
   function returnToSettings() {
     // Logic to return to settings

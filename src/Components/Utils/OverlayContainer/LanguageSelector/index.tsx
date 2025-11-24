@@ -106,7 +106,7 @@ export default function LangSelector() {
   }, [])
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end">
+    <div className="flex flex-col items-end">
       <button
         ref={btnRef}
         aria-haspopup="menu"

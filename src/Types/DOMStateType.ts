@@ -30,7 +30,7 @@ type PageInfo = {
 }
 
 type DomStateType = {
-  selectedStyleMode: 'dark' | 'light'
+  theme: 'dark' | 'light'
   overlayVisible: boolean
   AuthInfo: AuthInfo
   PageInfo: PageInfo

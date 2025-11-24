@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 export default function ThemeToggle() {
   const dispatch = useDispatch()
-  const theme = useSelector((state: RootState) => state.dom.selectedStyleMode)
+  const theme = useSelector((state: RootState) => state.dom.theme)
 
   return (
     <button

@@ -33,17 +33,6 @@ function PrivateRoute({ children }: { children: JSX.Element }) {
   return isLoggedIn ? children : <Navigate to="/" />
 }
 
-// Broken route for some reason
-// function PublicRoute({ children }: { children: JSX.Element }) {
-//   return (
-//     <div className="relative min-h-screen w-full overflow-hidden bg-slate-50 dark:bg-slate-950">
-//       <div className="absolute right-4 top-4 z-50">
-//         <ThemeToggle />
-//       </div>
-//       {children}
-//     </div>
-//   )
-// }
 function PublicRoute({ children }: { children: JSX.Element }) {
   return children
 }
@@ -75,9 +64,10 @@ function RoutesContainer() {
 }
 
 function ThemeHandler() {
-  const theme = useSelector((state: RootState) => state.dom.selectedStyleMode)
+  const theme = useSelector((state: RootState) => state.dom.theme)
 
   useEffect(() => {
+    console.log('Theme changed to:', theme)
     if (theme === 'dark') {
       document.documentElement.classList.add('dark')
     } else {
@@ -91,7 +81,6 @@ function ThemeHandler() {
 function AppContainer() {
   return (
     <StrictMode>
-      {/* TODO: Add supabase persistence and web id for configuration */}
       <Provider store={store}>
         <ThemeHandler />
         <BrowserRouter basename="/countspark">
