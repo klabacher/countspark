@@ -122,7 +122,7 @@ export default function LangSelector() {
           height="20"
         />
         {open ? (
-          <span className="hidden text-sm font-medium text-gray-700 sm:inline dark:text-gray-100">
+          <span className="hidden text-sm font-medium text-gray-700 dark:text-gray-100 sm:inline">
             {t('hud.languageSelect.label')}
           </span>
         ) : null}

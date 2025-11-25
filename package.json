@@ -21,7 +21,7 @@
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist -b gh-pages",
-    "supa": "supabase",
+    "supabase": "supabase",
     "sb:login": "supabase login",
     "sb:start": "supabase start",
     "sb:stop": "supabase stop",

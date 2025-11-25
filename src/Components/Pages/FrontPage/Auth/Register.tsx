@@ -30,7 +30,7 @@ export default function RegisterPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="rounded-sm border border-slate-200 bg-white/80 p-6 shadow-xl backdrop-blur-md dark:border-white/10 dark:bg-slate-900/80">
+      <div className="rounded-sm border border-slate-200 bg-white/90 p-6 shadow-xl backdrop-blur-md dark:border-white/10 dark:bg-slate-950/80">
         <div className="mb-6 text-center">
           <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
             {t('hud.AuthPage.Header.registerTitle')}

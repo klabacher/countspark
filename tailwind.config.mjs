@@ -3,6 +3,7 @@ import { addDynamicIconSelectors } from '@iconify/tailwind'
 
 export default {
   content: ['./src/**/*.{mjs,js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {}
   },

@@ -11,7 +11,7 @@ function App() {
   )
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-green-50 dark:bg-slate-950">
+    <div className="h-screen w-screen overflow-hidden bg-slate-50 dark:bg-slate-950">
       <div className="flex h-screen w-screen">
         <OverlayContainer />
         {/* TODO: add new sucess box for changes */}

@@ -7,6 +7,8 @@ import PreviewPage from 'Components/Pages/Dashboard/PreviewPage'
 import DashboardMenu from 'Components/Pages/Dashboard/SettingsPage'
 import Header from 'Components/Pages/Dashboard/Header'
 
+import OverlayContainer from 'Components/Utils/OverlayContainer'
+
 // Plan
 // Create full preview page with button to toggle state and change everything
 function DashboardContainer() {
@@ -16,7 +18,8 @@ function DashboardContainer() {
   )
 
   return (
-    <div className="flex h-screen w-screen flex-col overflow-hidden bg-green-50 p-0 dark:bg-slate-950">
+    <div className="flex h-screen w-screen flex-col overflow-hidden bg-slate-50 p-0 dark:bg-slate-950">
+      <OverlayContainer />
       <Header />
       <div className="flex-1 overflow-hidden">
         {state === 'preview' && <PreviewPage />}

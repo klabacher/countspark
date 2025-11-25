@@ -2,19 +2,23 @@ import RandomImageContainer from 'Components/Utils/RandomImage'
 import Store, { RootState } from 'Providers/ReduxProvider/Store'
 import { updateDashboardPageState } from 'Providers/ReduxProvider/DOMState'
 import { useSelector } from 'react-redux'
+import { Icon } from '@iconify/react'
 
-// TODO Insert Mini Preview of the Counter
 function MinifiedPreview() {
   return (
-    <div>
-      <div className="m-4 rounded bg-white/10 p-4 text-center text-sm text-white">
-        Mini Preview Placeholder
+    <div className="flex flex-col items-center justify-center space-y-4 p-8">
+      <div className="w-full max-w-xs rounded-sm border border-white/10 bg-slate-950/50 p-6 text-center backdrop-blur-md">
+        <div className="mb-2 font-mono text-4xl font-bold text-white">
+          00:00:00
+        </div>
+        <div className="text-xs uppercase tracking-widest text-slate-400">
+          Preview Mode
+        </div>
       </div>
     </div>
   )
 }
 
-// TODO Insert Mini Preview of the Counter
 export default function PreviewResults() {
   const dispatch = Store.dispatch
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -29,16 +33,23 @@ export default function PreviewResults() {
     )
   }
   return (
-    <div className="relative flex h-full w-1/2 flex-col border-r border-slate-800 shadow-2xl">
+    <div className="relative flex h-full w-1/2 flex-col border-r border-slate-800 bg-slate-900 shadow-2xl">
       <div className="absolute inset-0 z-0 size-full">
         <RandomImageContainer sizeFull={true} />
-
         <div className="absolute inset-0 size-full bg-slate-950/60 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" />
       </div>
-      <div className="z-10">
+
+      <div className="z-10 flex size-full flex-col items-center justify-center">
         <MinifiedPreview />
-        <button onClick={() => gotoPreview()} className="size-full">
-          Go to Full Previw
+
+        <button
+          onClick={() => gotoPreview()}
+          className="group relative flex items-center gap-2 rounded-sm border border-white/20 bg-white/10 px-6 py-3 font-medium text-white backdrop-blur-sm transition-all hover:border-white/30 hover:bg-white/20"
+        >
+          <Icon icon="mdi:fullscreen" className="text-xl" />
+          <span>Full Screen Preview</span>
+          <div className="absolute -inset-1 rounded-sm bg-white/20 opacity-0 blur transition-opacity group-hover:opacity-100" />
         </button>
       </div>
     </div>

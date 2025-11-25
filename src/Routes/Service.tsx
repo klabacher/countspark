@@ -50,7 +50,7 @@ function App() {
     navigate(`/`)
   } else {
     return (
-      <div className="h-screen w-screen overflow-hidden bg-green-50 p-1">
+      <div className="h-screen w-screen overflow-hidden bg-slate-50 p-1 dark:bg-slate-950">
         {overlay ? <OverlayMenuContainer /> : null}
         <div className="flex h-screen w-screen">
           <RandomImageContainer />
