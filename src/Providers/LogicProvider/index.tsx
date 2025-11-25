@@ -27,8 +27,8 @@ const LogicProvider = {
         id: item.id,
         title: item.title,
         status: item.status === 'active' ? 'online' : item.status || 'online', // Map active to online
-        date_created: new Date(item.created_at).toLocaleDateString(),
-        date_update: new Date(item.updated_at).toLocaleDateString()
+        date_created: item.created_at,
+        date_update: item.updated_at
       }))
 
       console.log('Logic stores listed, status:', status)
