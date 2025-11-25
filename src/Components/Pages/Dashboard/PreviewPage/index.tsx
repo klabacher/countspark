@@ -20,9 +20,14 @@ export default function CountDownContainer() {
     )
   }, [settingsData, dispatch])
   return (
-    <div className="flex h-full flex-row">
-      <RandomImageContainer />
-      <CounterContainer type="preview" />
+    <div className="relative flex size-full flex-row overflow-hidden bg-slate-950">
+      <div className="absolute inset-0 z-0">
+        <RandomImageContainer />
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+      </div>
+      <div className="relative z-10 flex size-full items-center justify-center">
+        <CounterContainer type="preview" />
+      </div>
     </div>
   )
 }

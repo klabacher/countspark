@@ -32,43 +32,43 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="rounded-sm border border-slate-200 bg-white/90 p-6 shadow-xl backdrop-blur-md dark:border-white/10 dark:bg-slate-950/80">
-        <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+      <div className="glass-panel p-8">
+        <div className="mb-8 text-center">
+          <h1 className="text-2xl font-bold tracking-tight text-white">
             {t('hud.AuthPage.Header.loginTitle')}
           </h1>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+          <p className="mt-2 text-sm text-slate-400">
             {t('hud.AuthPage.LoginForm.intro')}
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
-          <button className="flex items-center justify-center gap-2 rounded-sm border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:bg-slate-50 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white">
+        <div className="grid grid-cols-2 gap-4">
+          <button className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-slate-300 transition-all hover:bg-white/10 hover:text-white hover:border-white/20">
             <Icon icon="logos:google-icon" className="text-lg" />
             {t('hud.AuthPage.LoginForm.google')}
           </button>
-          <button className="flex items-center justify-center gap-2 rounded-sm border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:bg-slate-50 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white">
+          <button className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-slate-300 transition-all hover:bg-white/10 hover:text-white hover:border-white/20">
             <Icon icon="mdi:github" className="text-lg" />
             {t('hud.AuthPage.LoginForm.github')}
           </button>
         </div>
 
-        <div className="relative my-6">
+        <div className="relative my-8">
           <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t border-slate-200 dark:border-slate-700" />
+            <span className="w-full border-t border-white/10" />
           </div>
           <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-white px-2 text-slate-500 dark:bg-slate-900 dark:text-slate-400">
+            <span className="bg-slate-900/50 px-2 text-slate-500 backdrop-blur-sm">
               {t('hud.AuthPage.orContinueWith')}
             </span>
           </div>
         </div>
 
-        <form className="space-y-4" onSubmit={handleSubmit}>
+        <form className="space-y-5" onSubmit={handleSubmit}>
           <div className="space-y-2">
             <label
               htmlFor="email"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              className="text-sm font-medium leading-none text-slate-300"
             >
               {t('hud.AuthPage.LoginForm.emailLabel')}
             </label>
@@ -77,10 +77,10 @@ export default function LoginPage() {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`flex h-10 w-full rounded-sm border bg-transparent px-3 py-2 text-sm transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:text-slate-50 dark:focus:ring-offset-slate-900 ${
+              className={`flex h-11 w-full rounded-lg border bg-black/20 px-3 py-2 text-sm text-slate-100 transition-all placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-offset-0 ${
                 errorState
-                  ? 'border-red-500 focus:ring-red-500 dark:border-red-500'
-                  : 'border-slate-300 focus:ring-indigo-500 dark:border-slate-700 dark:focus:ring-indigo-500'
+                  ? 'border-red-500/50 focus:ring-red-500/50'
+                  : 'border-white/10 focus:border-indigo-500/50 focus:ring-indigo-500/20'
               }`}
               placeholder={t('hud.AuthPage.LoginForm.emailPlaceholder')}
             />
@@ -89,7 +89,7 @@ export default function LoginPage() {
             <div className="flex items-center justify-between">
               <label
                 htmlFor="password"
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                className="text-sm font-medium leading-none text-slate-300"
               >
                 {t('hud.AuthPage.LoginForm.passwordLabel')}
               </label>
@@ -100,7 +100,7 @@ export default function LoginPage() {
                     updateFrontPageState({ state: 'auth:forgot-password' })
                   )
                 }
-                className="text-sm font-medium text-slate-600 transition-colors duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"
+                className="text-sm font-medium text-indigo-400 transition-colors hover:text-indigo-300"
               >
                 {t('hud.AuthPage.LoginForm.forgotPassword')}
               </button>
@@ -111,17 +111,17 @@ export default function LoginPage() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className={`flex h-10 w-full rounded-sm border bg-transparent px-3 py-2 text-sm transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:text-slate-50 dark:focus:ring-offset-slate-900 ${
+                className={`flex h-11 w-full rounded-lg border bg-black/20 px-3 py-2 text-sm text-slate-100 transition-all placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-offset-0 ${
                   errorState
-                    ? 'border-red-500 focus:ring-red-500 dark:border-red-500'
-                    : 'border-slate-300 focus:ring-indigo-500 dark:border-slate-700 dark:focus:ring-indigo-500'
+                    ? 'border-red-500/50 focus:ring-red-500/50'
+                    : 'border-white/10 focus:border-indigo-500/50 focus:ring-indigo-500/20'
                 }`}
                 placeholder={t('hud.AuthPage.LoginForm.passwordPlaceholder')}
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 transition-colors duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 transition-colors hover:text-slate-300"
               >
                 <Icon
                   icon={showPassword ? 'mdi:eye-off' : 'mdi:eye'}
@@ -130,13 +130,16 @@ export default function LoginPage() {
               </button>
             </div>
             {errorState && (
-              <p className="mt-1 text-xs text-red-500">{errorState}</p>
+              <p className="mt-1 text-xs text-red-400 font-medium flex items-center gap-1">
+                <Icon icon="mdi:alert-circle" />
+                {errorState}
+              </p>
             )}
           </div>
           <button
             type="submit"
             disabled={isLoading}
-            className="inline-flex h-10 w-full items-center justify-center rounded-sm border border-indigo-500/20 bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-lg transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:bg-indigo-700 hover:shadow-indigo-500/25 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:focus:ring-offset-slate-900"
+            className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-bold text-white shadow-lg shadow-indigo-500/25 transition-all hover:from-indigo-500 hover:to-violet-500 hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:scale-95 disabled:pointer-events-none disabled:opacity-50"
           >
             {isLoading ? (
               <Icon icon="eos-icons:loading" className="animate-spin text-xl" />

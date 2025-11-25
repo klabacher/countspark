@@ -15,7 +15,7 @@ type RandomImageProps = {
 }
 
 const Placeholder = () => (
-  <div className="flex size-full items-center justify-center bg-slate-800 text-slate-600">
+  <div className="flex size-full items-center justify-center bg-slate-900 text-slate-600">
     <span className="text-sm">No Image Source</span>
   </div>
 )
@@ -82,14 +82,14 @@ export default function RandomImageContainer({
 
   if (sizeFull) {
     return (
-      <div className="absolute inset-0 size-full overflow-hidden bg-slate-900">
+      <div className="absolute inset-0 size-full overflow-hidden bg-slate-950">
         <RandomImage src={backgroundImageUrl} />
       </div>
     )
   }
 
   return (
-    <div className="relative  w-1/2 overflow-hidden bg-slate-900 p-4">
+    <div className="relative w-full overflow-hidden bg-slate-900 p-4">
       <div className="absolute inset-0 bg-slate-900/20" />{' '}
       {/* Placeholder visual instantâneo */}
       <RandomImage src={backgroundImageUrl} />

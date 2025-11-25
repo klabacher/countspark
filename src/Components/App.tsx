@@ -83,9 +83,16 @@ function AppContainer() {
     <StrictMode>
       <Provider store={store}>
         <ThemeHandler />
+        <ThemeHandler />
+        <div className="fixed inset-0 -z-10 bg-slate-50 transition-colors duration-500 dark:bg-slate-950">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-100 via-slate-50 to-slate-50 dark:from-indigo-900/20 dark:via-slate-950 dark:to-slate-950" />
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay brightness-100 contrast-150 dark:opacity-20" />
+        </div>
         <BrowserRouter basename="/countspark">
           <SessionHandler>
-            <RoutesContainer />
+            <div className="min-h-screen text-slate-900 selection:bg-indigo-500/30 dark:text-slate-200">
+              <RoutesContainer />
+            </div>
           </SessionHandler>
           <ToastContainer
             position="bottom-right"
@@ -97,7 +104,8 @@ function AppContainer() {
             pauseOnFocusLoss
             draggable
             pauseOnHover
-            theme="colored"
+            theme="dark"
+            toastClassName="!bg-slate-900/90 !backdrop-blur-md !border !border-white/10 !text-slate-200 !rounded-xl !shadow-xl"
           />
         </BrowserRouter>
       </Provider>

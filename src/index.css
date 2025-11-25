@@ -4,6 +4,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-200 antialiased selection:bg-indigo-500/30 selection:text-indigo-200;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl rounded-2xl;
+  }
+
+  .glass-button {
+    @apply px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 active:scale-95;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-cyan-400;
+  }
+}
+
 /* Nossa customização da Scrollbar */
 @layer utilities {
   /* Habilita scrollbar fina no Firefox */
@@ -23,11 +43,6 @@
   }
 
   .scrollbar-custom::-webkit-scrollbar-thumb {
-    @apply bg-slate-300 dark:bg-slate-700; /* Cor dinâmica */
-    border-radius: 20px;
-  }
-
-  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
-    @apply bg-slate-400 dark:bg-slate-600;
+    @apply bg-slate-700/50 hover:bg-slate-600/80 rounded-full backdrop-blur-sm;
   }
 }

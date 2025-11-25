@@ -4,32 +4,34 @@ import RegisterPage from './Auth/Register'
 import ForgotPassword from './Auth/ForgotPassword'
 import HeaderMenu from './Auth/Header'
 import { useSelector } from 'react-redux'
-
-// Todo: add animation when switching between login and register
-// Todo: add form validation
-//Todo: connect buttons to backend auth logic
-//Todo: add "forgot password" link HALF
-//Todo: add "show password" toggle MADE
-//Todo: add social login https://supabase.com/docs/guides/auth/social-login/auth-github
-//Todo: add social https://supabase.com/docs/guides/auth/social-login/auth-google
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Auth() {
   const FrontPageState = useSelector(
     (state: RootState) => state.dom.PageInfo.FrontPage.state
   )
   return (
-    <div className="flex w-11/12 flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <div className="flex w-full max-w-md flex-col items-center justify-center p-4">
       <HeaderMenu />
-      <div className="flex flex-1 flex-col items-center justify-center p-4 sm:p-8">
-        <div className="w-full max-w-md transition-all duration-500">
-          {FrontPageState === 'auth:login' ? (
-            <LoginPage />
-          ) : FrontPageState === 'auth:register' ? (
-            <RegisterPage />
-          ) : FrontPageState === 'auth:forgot-password' ? (
-            <ForgotPassword />
-          ) : null}
-        </div>
+      <div className="w-full mt-6">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={FrontPageState}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="w-full"
+          >
+            {FrontPageState === 'auth:login' ? (
+              <LoginPage />
+            ) : FrontPageState === 'auth:register' ? (
+              <RegisterPage />
+            ) : FrontPageState === 'auth:forgot-password' ? (
+              <ForgotPassword />
+            ) : null}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   )
