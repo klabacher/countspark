@@ -1,8 +1,8 @@
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
-import { useDispatch, useSelector } from 'react-redux'
-import { reduxSlice } from 'Providers/ReduxProvider/DOMState'
+import { useSelector } from 'react-redux'
 import { RootState } from 'Providers/ReduxProvider/Store'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 // Define the steps structure for easy adding/modifying
 type Step = {
@@ -29,13 +29,18 @@ const STEPS: Step[] = [
 ]
 
 export default function Status() {
-  const dispatch = useDispatch()
-  const currentTab = useSelector(
-    (state: RootState) => state.dom.PageInfo.DashboardPage.SettingsTab
-  )
+  const navigate = useNavigate()
+  const location = useLocation()
+  const pathname = location.pathname
+
   const projectTitle = useSelector(
     (state: RootState) => state.counter.Settings.Texts.title
   )
+
+  // Determine current tab from URL
+  const isExplorer = pathname === '/dashboard/settings' || pathname === '/dashboard/settings/'
+  const isEditor = pathname.includes('/dashboard/settings/new') || pathname.includes('/dashboard/settings/edit')
+  const currentTab = isEditor ? 'TabEditItem' : 'TabExplorerMenu'
 
   // Find current active step index
   const activeStepIndex = STEPS.findIndex((step) =>
@@ -46,7 +51,7 @@ export default function Status() {
     // Logic for navigation
     // We allow going back to Projects always
     if (step.id === 'projects') {
-      dispatch(reduxSlice.actions.updateSettingsTabState('TabExplorerMenu'))
+      navigate('/dashboard/settings')
     }
     // Future: If we want to allow jumping to Editor (e.g. last edited), we'd need more state
   }

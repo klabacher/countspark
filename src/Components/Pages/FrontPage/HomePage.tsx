@@ -2,8 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { Icon } from '@iconify/react'
 import CountSparkLogo from '../../Utils/Logo'
 import Footer from './Footer'
-import { useDispatch, useSelector } from 'react-redux'
-import { updateFrontPageState } from 'Providers/ReduxProvider/DOMState'
+import { useSelector } from 'react-redux'
 import { RootState } from 'Providers/ReduxProvider/Store'
 import { useNavigate } from 'react-router-dom'
 import AuthProvider from 'Providers/AuthProvider'
@@ -43,7 +42,6 @@ export function LogoImageContainer({
 }
 
 function BodyMenu() {
-  const dispatch = useDispatch()
   const navigate = useNavigate()
   const { t } = useTranslation()
 
@@ -51,10 +49,6 @@ function BodyMenu() {
     (state: RootState) => state.dom.AuthInfo.isAuthenticated
   )
   const user = useSelector((state: RootState) => state.dom.AuthInfo.user)
-
-  const setSelectedDiv = (value: 'image' | 'auth:login' | 'auth:register') => {
-    dispatch(updateFrontPageState({ state: value }))
-  }
 
   return (
     <motion.div
@@ -132,7 +126,7 @@ function BodyMenu() {
             ) : (
               <>
                 <button
-                  onClick={() => setSelectedDiv('auth:login')}
+                  onClick={() => navigate('/auth/login')}
                   className="group relative flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-3 font-sans text-sm font-bold text-white shadow-lg shadow-orange-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:from-amber-400 hover:to-orange-500 hover:shadow-orange-500/35 active:scale-95"
                 >
                   <Icon icon="mdi:login" className="text-xl" />
@@ -140,7 +134,7 @@ function BodyMenu() {
                 </button>
 
                 <button
-                  onClick={() => setSelectedDiv('auth:register')}
+                  onClick={() => navigate('/auth/register')}
                   className="group flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-sans text-sm font-bold text-slate-300 transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:text-white active:scale-95"
                 >
                   <Icon icon="mdi:account-plus" className="text-xl" />

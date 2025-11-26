@@ -5,8 +5,7 @@ import {
   authStart,
   authSuccess,
   authFail,
-  logout as logoutAction,
-  updateFrontPageState
+  logout as logoutAction
 } from 'Providers/ReduxProvider/DOMState'
 import { UserProfile } from 'Types/DOMStateType'
 import { toast } from 'react-toastify'
@@ -177,8 +176,7 @@ const AuthProvider = {
           token: authData.session?.access_token || ''
         })
       )
-      // Send to Login Tab
-      dispatch(updateFrontPageState({ state: 'auth:login' }))
+      // Navigation to activation page is handled by the component
       toast.success('Conta criada com sucesso!')
       return null
     } catch (error: any) {

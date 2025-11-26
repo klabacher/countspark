@@ -2,10 +2,7 @@ import RandomImageContainer from 'Components/Utils/RandomImage'
 import { Icon } from '@iconify/react'
 import { AppDispatch, RootState } from 'Providers/ReduxProvider/Store'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  updateSelectedItemId,
-  updateSettingsTabState
-} from 'Providers/ReduxProvider/DOMState'
+import { updateSelectedItemId } from 'Providers/ReduxProvider/DOMState'
 import { updateProjectList } from 'Providers/ReduxProvider/LogicStore'
 import LogicProvider from 'Providers/LogicProvider'
 import { ProjectItem } from 'Types/LogicStoreType'
@@ -179,8 +176,11 @@ function SideB() {
   const selectProject = (id: string | null) => {
     dispatch(updateSelectedItemId(id))
   }
-  const changeTab = (tab: string) => {
-    dispatch(updateSettingsTabState(tab))
+  const goToEditTab = () => {
+    navigate('/dashboard/settings/edit')
+  }
+  const goToNewTab = () => {
+    navigate('/dashboard/settings/new')
   }
 
   useEffect(() => {
@@ -393,7 +393,7 @@ function SideB() {
             <div className="flex-none border-t border-slate-200 bg-white/50 p-6 backdrop-blur-md dark:border-white/10 dark:bg-slate-900/50">
               <div className="flex gap-3">
                 <button
-                  onClick={() => changeTab('TabEditItem')}
+                  onClick={() => goToEditTab()}
                   className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-blue-600 py-3 font-medium text-white shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-blue-500/30"
                 >
                   <Icon icon="mdi:pencil" />
@@ -425,7 +425,7 @@ function SideB() {
               um novo contador.
             </p>
             <button
-              onClick={() => changeTab('TabCreateItem')}
+              onClick={() => goToNewTab()}
               className="flex items-center gap-2 rounded-lg bg-slate-900 px-6 py-3 font-semibold text-white transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
             >
               <Icon icon="mdi:plus" />

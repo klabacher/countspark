@@ -24,7 +24,8 @@ export default function RegisterPage() {
     if (errorMsg) {
       setErrorState(errorMsg)
     } else {
-      navigate('/')
+      // Navigate to activation page after successful registration
+      navigate('/auth/register/activate')
     }
   }
 

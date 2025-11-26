@@ -14,12 +14,7 @@ const initialState: initialStateType = {
     error: null
   },
   PageInfo: {
-    FrontPage: {
-      state: 'home'
-    },
     DashboardPage: {
-      state: 'settings',
-      SettingsTab: 'TabExplorerMenu',
       selectedItemId: null
     }
   }
@@ -32,15 +27,6 @@ export const reduxSlice = createSlice({
     // Definir os reducers aqui
     updateOverlayVisible(state) {
       state.overlayVisible = !state.overlayVisible
-    },
-    updateFrontPageState(state, action) {
-      state.PageInfo.FrontPage = action.payload
-    },
-    updateDashboardPageState(state, action) {
-      state.PageInfo.DashboardPage.state = action.payload.state
-    },
-    updateSettingsTabState(state, action) {
-      state.PageInfo.DashboardPage.SettingsTab = action.payload
     },
     // Settings - TabExplorer selected item ID
     updateSelectedItemId(state, action) {
@@ -77,13 +63,10 @@ export const reduxSlice = createSlice({
 
 export const {
   updateOverlayVisible,
-  updateFrontPageState,
   authStart,
   authSuccess,
   authFail,
   logout,
-  updateDashboardPageState,
-  updateSettingsTabState,
   updateSelectedItemId,
   toggleTheme
 } = reduxSlice.actions

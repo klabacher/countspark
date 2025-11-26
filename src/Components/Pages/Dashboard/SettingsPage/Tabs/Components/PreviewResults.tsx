@@ -1,7 +1,7 @@
 import RandomImageContainer from 'Components/Utils/RandomImage'
-import Store, { RootState } from 'Providers/ReduxProvider/Store'
-import { updateDashboardPageState } from 'Providers/ReduxProvider/DOMState'
+import { RootState } from 'Providers/ReduxProvider/Store'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { Icon } from '@iconify/react'
 
 function MinifiedPreview() {
@@ -20,17 +20,13 @@ function MinifiedPreview() {
 }
 
 export default function PreviewResults() {
-  const dispatch = Store.dispatch
+  const navigate = useNavigate()
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const selecionado = useSelector(
     (state: RootState) => state.dom.PageInfo.DashboardPage.selectedItemId
   )
   const gotoPreview = () => {
-    dispatch(
-      updateDashboardPageState({
-        state: 'preview'
-      })
-    )
+    navigate('/dashboard/preview')
   }
   return (
     <div className="relative flex h-full w-1/2 flex-col border-r border-slate-200 bg-slate-50 shadow-2xl dark:border-white/10 dark:bg-slate-900">

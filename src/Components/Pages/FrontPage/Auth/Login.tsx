@@ -2,15 +2,13 @@ import { useState } from 'react'
 import { Icon } from '@iconify/react'
 import Footer from '../Footer'
 import { useTranslation } from 'react-i18next'
-import { useDispatch } from 'react-redux'
-import { updateFrontPageState } from 'Providers/ReduxProvider/DOMState'
 import AuthProvider from 'Providers/AuthProvider'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export default function LoginPage() {
   const { t } = useTranslation()
-  const dispatch = useDispatch()
   const navigate = useNavigate()
+  const location = useLocation()
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -26,7 +24,9 @@ export default function LoginPage() {
     if (errorMsg) {
       setErrorState(errorMsg)
     } else {
-      navigate('/dashboard')
+      // Redirect to intended destination or dashboard
+      const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/dashboard'
+      navigate(from, { replace: true })
     }
   }
 
@@ -95,11 +95,7 @@ export default function LoginPage() {
               </label>
               <button
                 type="button"
-                onClick={() =>
-                  dispatch(
-                    updateFrontPageState({ state: 'auth:forgot-password' })
-                  )
-                }
+                onClick={() => navigate('/auth/forgot')}
                 className="text-sm font-medium text-indigo-400 transition-colors hover:text-indigo-300"
               >
                 {t('hud.AuthPage.LoginForm.forgotPassword')}

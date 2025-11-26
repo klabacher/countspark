@@ -14,18 +14,11 @@ type AuthInfo = {
   error: string | null
 }
 
-type FrontPage = {
-  state: 'home' | 'auth:login' | 'auth:register' | 'auth:forgot-password'
-}
-
 type DashboardPage = {
-  state: 'preview' | 'settings' | 'analytics'
-  SettingsTab: 'TabExplorerMenu' | 'TabCreateItem' | 'TabEditItem'
   selectedItemId?: string | null
 }
 
 type PageInfo = {
-  FrontPage: FrontPage
   DashboardPage: DashboardPage
 }
 
