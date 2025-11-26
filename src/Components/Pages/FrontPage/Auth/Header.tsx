@@ -4,7 +4,6 @@ import { updateFrontPageState } from 'Providers/ReduxProvider/DOMState'
 import { useTranslation } from 'react-i18next'
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
-import Logo from '../../../Utils/Logo'
 
 export default function HeaderMenu() {
   const dispatch = useDispatch()

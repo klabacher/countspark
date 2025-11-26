@@ -15,16 +15,17 @@ function App() {
     <div className="h-screen w-screen overflow-hidden bg-slate-50 dark:bg-slate-950">
       <div className="flex h-screen w-screen">
         <OverlayContainer />
-        {/* TODO: add new sucess box for changes */}
+        {/* When */}
         {FrontPageState === 'home' ? (
-          <LogoImageContainer context="frontpage" />
+          <>
+            <LogoImageContainer context="frontpage" />
+            <HomePage />
+          </>
         ) : (
-          <Auth />
-        )}
-        {FrontPageState === 'home' ? (
-          <HomePage />
-        ) : (
-          <LogoImageContainer context="auth" />
+          <>
+            <Auth />
+            <LogoImageContainer context="auth" />
+          </>
         )}
       </div>
     </div>

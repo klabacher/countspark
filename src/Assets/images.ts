@@ -10,9 +10,10 @@ const images = {
       'https://images.pexels.com/photos/34872274/pexels-photo-34872274.jpeg', // https://www.pexels.com/photo/scenic-autumn-path-lined-with-golden-trees-34872274/
     dark: 'https://images.pexels.com/photos/29579880/pexels-photo-29579880.jpeg' // https://www.pexels.com/photo/misty-forest-path-in-dense-pine-woods-29579880/
   },
-  dashboard: {
-    light: '/images/background-light.jpg',
-    dark: '/images/background-dark.jpg'
+  auth: {
+    light:
+      'https://images.pexels.com/photos/29579880/pexels-photo-29579880.jpeg',
+    dark: 'https://images.pexels.com/photos/29579880/pexels-photo-29579880.jpeg'
   },
   icon: {
     light: '/images/icon-light.svg',

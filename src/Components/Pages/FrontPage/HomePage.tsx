@@ -27,7 +27,7 @@ export function LogoImageContainer({
       <div className="absolute inset-0 z-0">
         <ImageContainer
           sizeFull={true}
-          context={context === 'frontpage' ? 'frontpage' : 'icon'}
+          context={context === 'frontpage' ? 'frontpage' : 'auth'}
         />
       </div>
 
@@ -91,24 +91,6 @@ function BodyMenu() {
           </button>
         </motion.div>
       )}
-
-      {/* Logo Container */}
-      {/* <motion.div
-        whileHover={{ scale: 1.05 }}
-        className="relative flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-10 shadow-2xl backdrop-blur-xl"
-      >
-        <div
-          className="absolute inset-0 rounded-2xl opacity-30"
-          style={{
-            backgroundImage: 'radial-gradient(#6366f1 1px, transparent 1px)',
-            backgroundSize: '24px 24px'
-          }}
-        />
-        <div className="relative z-10">
-          <div className="absolute inset-0 rounded-full bg-indigo-500/20 blur-3xl" />
-          <CountSparkLogo size="lg" theme="dark" />
-        </div>
-      </motion.div> */}
 
       {/* Welcome Text */}
       <div className="space-y-2 text-center">
