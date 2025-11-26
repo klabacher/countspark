@@ -114,7 +114,7 @@ export default function HeaderMenu() {
                   animate={{
                     left: '50%'
                   }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   style={{ width: 'calc(50% - 4px)' }}
                 />
 

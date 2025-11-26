@@ -22,17 +22,17 @@ export default function HeaderMenu() {
 
   return (
     <div className="sticky top-0 z-50 flex w-full items-center justify-between rounded-2xl border border-slate-200 bg-white/80 px-6 py-3 shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
-      <div
+      {/* <div
         onClick={() => setSelectedDiv('home')}
         className="cursor-pointer transition-opacity duration-300 hover:opacity-80"
       >
         <Logo size="sm" theme="dark" />
-      </div>
+      </div> */}
 
       {/* Toggle input checkbox */}
       {(FrontPageState === 'auth:login' ||
         FrontPageState === 'auth:register') && (
-        <div className="relative flex w-1/2 max-w-[300px] rounded-xl border border-slate-200 bg-slate-100 p-1 backdrop-blur-sm dark:border-white/10 dark:bg-black/20">
+        <div className="relative flex w-3/4 max-w-[300px] rounded-xl border border-slate-200 bg-slate-100 p-1 backdrop-blur-sm dark:border-white/10 dark:bg-black/20">
           {/* Fundo Animado (A "Pílula" Branca) */}
           <motion.div
             layoutId="active-pill"

@@ -41,11 +41,11 @@ export default function RegisterPage() {
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          <button className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-slate-300 transition-all hover:bg-white/10 hover:text-white hover:border-white/20">
+          <button className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-slate-300 transition-all hover:border-white/20 hover:bg-white/10 hover:text-white">
             <Icon icon="logos:google-icon" className="text-lg" />
             {t('hud.AuthPage.RegisterForm.google')}
           </button>
-          <button className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-slate-300 transition-all hover:bg-white/10 hover:text-white hover:border-white/20">
+          <button className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-slate-300 transition-all hover:border-white/20 hover:bg-white/10 hover:text-white">
             <Icon icon="mdi:github" className="text-lg" />
             {t('hud.AuthPage.RegisterForm.github')}
           </button>
@@ -75,7 +75,7 @@ export default function RegisterPage() {
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="flex h-11 w-full rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 transition-all placeholder:text-slate-500 focus:outline-none focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/20"
+              className="flex h-11 w-full rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 transition-all placeholder:text-slate-500 focus:border-indigo-500/50 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               placeholder={t('hud.AuthPage.RegisterForm.namePlaceholder')}
             />
           </div>
@@ -91,7 +91,7 @@ export default function RegisterPage() {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex h-11 w-full rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 transition-all placeholder:text-slate-500 focus:outline-none focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/20"
+              className="flex h-11 w-full rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 transition-all placeholder:text-slate-500 focus:border-indigo-500/50 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               placeholder={t('hud.AuthPage.RegisterForm.emailPlaceholder')}
             />
           </div>
@@ -108,7 +108,7 @@ export default function RegisterPage() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="flex h-11 w-full rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 transition-all placeholder:text-slate-500 focus:outline-none focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/20"
+                className="flex h-11 w-full rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 transition-all placeholder:text-slate-500 focus:border-indigo-500/50 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               />
               <button
                 type="button"
@@ -122,7 +122,7 @@ export default function RegisterPage() {
               </button>
             </div>
             {errorState && (
-              <p className="mt-1 text-xs text-red-400 font-medium flex items-center gap-1">
+              <p className="mt-1 flex items-center gap-1 text-xs font-medium text-red-400">
                 <Icon icon="mdi:alert-circle" />
                 {errorState}
               </p>
@@ -131,7 +131,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-bold text-white shadow-lg shadow-indigo-500/25 transition-all hover:from-indigo-500 hover:to-violet-500 hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:scale-95 disabled:pointer-events-none disabled:opacity-50"
+            className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-bold text-white shadow-lg shadow-indigo-500/25 transition-all hover:-translate-y-0.5 hover:from-indigo-500 hover:to-violet-500 hover:shadow-indigo-500/40 active:scale-95 disabled:pointer-events-none disabled:opacity-50"
           >
             {isLoading ? (
               <Icon icon="eos-icons:loading" className="animate-spin text-xl" />

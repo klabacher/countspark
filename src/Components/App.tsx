@@ -42,6 +42,7 @@ function RoutesContainer() {
   return (
     <Routes>
       <Route path="/" element={<FrontPage />} />
+      <Route path="/auth/:mode" element={<FrontPage />} />
       <Route
         path="/pub/:id"
         element={
@@ -82,7 +83,6 @@ function AppContainer() {
   return (
     <StrictMode>
       <Provider store={store}>
-        <ThemeHandler />
         <ThemeHandler />
         <div className="fixed inset-0 -z-10 bg-slate-50 transition-colors duration-500 dark:bg-slate-950">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-100 via-slate-50 to-slate-50 dark:from-indigo-900/20 dark:via-slate-950 dark:to-slate-950" />

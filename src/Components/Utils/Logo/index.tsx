@@ -136,6 +136,7 @@ type SizeKey = 'sm' | 'md' | 'lg' | 'xl'
 interface CountSparkLogoProps {
   theme?: 'dark' | 'light'
   size?: SizeKey
+  showStatus?: boolean
 }
 
 /**
@@ -144,7 +145,8 @@ interface CountSparkLogoProps {
  */
 const CountSparkLogo = ({
   theme = 'dark',
-  size = 'md'
+  size = 'md',
+  showStatus = false
 }: CountSparkLogoProps) => {
   const [mounted, setMounted] = useState(false)
 
@@ -188,23 +190,25 @@ const CountSparkLogo = ({
             <span className="absolute inset-0 size-full bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0" />
           </span>
         </h1>
-
         {/* Tagline ou Contador visual */}
-        <div
-          className={`font-mono text-xs uppercase tracking-widest ${subTextColors} flex h-4 items-center gap-2 overflow-hidden`}
-        >
-          <span className="size-1 animate-pulse rounded-full bg-green-500" />
-          <div className="flex items-center leading-none">
-            Status:
-            <span className="ml-1 flex font-bold text-green-500">
-              {/* Simula um contador iniciando em 000 e indo para 942 */}
-              <RollingDigit value={mounted ? 9 : 0} delay={500} />
-              <RollingDigit value={mounted ? 4 : 0} delay={700} />
-              <RollingDigit value={mounted ? 2 : 0} delay={900} />
-            </span>
-            <span className="ml-1 align-top text-[0.6em] opacity-60">ms</span>
+        {showStatus && (
+          <div
+            className={`font-mono text-xs uppercase tracking-widest ${subTextColors} flex h-4 items-center gap-2 overflow-hidden`}
+          >
+            <span className="size-1 animate-pulse rounded-full bg-green-500" />
+            <div className="flex items-center leading-none">
+              Status:
+              <span className="ml-1 flex font-bold text-green-500">
+                {/* Simula um contador iniciando em 000 e indo para 942 */}
+                <RollingDigit value={mounted ? 9 : 0} delay={500} />
+                <RollingDigit value={mounted ? 4 : 0} delay={700} />
+                <RollingDigit value={mounted ? 2 : 0} delay={900} />
+              </span>
+              <span className="ml-1 align-top text-[0.6em] opacity-60">ms</span>
+            </div>
           </div>
-        </div>
+        )}
+        {/* Tagline ou Contador visual */}
       </div>
 
       {/* Keyframes globais para o componente (se não estiverem no tailwind config) */}
@@ -221,59 +225,5 @@ const CountSparkLogo = ({
     </div>
   )
 }
-
-/**
- * Showcase para visualização
- * Mostra o logo em diferentes contextos.
- */
-// function LogoShowcase() {
-//   return (
-//     <div className="min-h-screen bg-slate-950 p-8 font-sans text-slate-200">
-//       <div className="mx-auto max-w-4xl space-y-12">
-//         {/* Cabeçalho */}
-//         <div className="mb-16 space-y-4 text-center">
-//           <h2 className="text-2xl font-light text-slate-400">
-//             CountSpark Identity
-//           </h2>
-//           <p className="mx-auto max-w-md text-slate-500">
-//             Componente React autônomo. Nenhuma imagem externa. Apenas SVG e CSS
-//             Transitions.
-//           </p>
-//         </div>
-
-//         {/* Apresentação Principal (Hero) */}
-//         <div className="relative flex flex-col items-center justify-center gap-8 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 p-12 shadow-2xl">
-//           {/* Grid de fundo decorativo */}
-//           <div
-//             className="absolute inset-0 opacity-20"
-//             style={{
-//               backgroundImage: 'radial-gradient(#475569 1px, transparent 1px)',
-//               backgroundSize: '20px 20px'
-//             }}
-//           ></div>
-
-//           <CountSparkLogo size="xl" theme="dark" />
-
-//           <div className="z-10 rounded-full border border-slate-700 bg-slate-800/50 px-4 py-2 text-xs text-slate-400 backdrop-blur">
-//             Passe o mouse sobre o logo
-//           </div>
-//         </div>
-
-//         {/* Variações de Tamanho e Cor */}
-//         <div className="grid gap-8 md:grid-cols-2">
-//           {/* Versão Light Mode */}
-//           <div className="flex items-center justify-center rounded-2xl border border-slate-200 bg-white p-8 shadow-lg">
-//             <CountSparkLogo size="lg" theme="light" />
-//           </div>
-
-//           {/* Versão Compacta / Card */}
-//           <div className="flex items-center justify-center rounded-2xl border border-slate-800 bg-slate-900 p-8">
-//             <CountSparkLogo size="md" theme="dark" />
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
 
 export default CountSparkLogo

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from 'Providers/ReduxProvider/Store'
 import { toast } from 'react-toastify'
+import useImageDynamicCDNLink, { ImageKey } from 'Assets/images'
 
 // type Size = {
 //   width: number
@@ -20,7 +21,7 @@ const Placeholder = () => (
   </div>
 )
 
-function RandomImage({ src, alt }: RandomImageProps) {
+function DynamicImage({ src, alt }: RandomImageProps) {
   // Estado para guardar a URL gerada e evitar re-renders com URLs novas
   const [stableUrl, setStableUrl] = useState<string | undefined>(undefined)
   const [isError, setIsError] = useState(false)
@@ -71,19 +72,38 @@ function RandomImage({ src, alt }: RandomImageProps) {
   )
 }
 
-export default function RandomImageContainer({
-  sizeFull = false
+export default function ImageContainer({
+  sizeFull = false,
+  src,
+  context
 }: {
   sizeFull?: boolean
+  context?: ImageKey
+  src?: string
 }) {
-  const backgroundImageUrl = useSelector(
+  const dynamicCDN = useImageDynamicCDNLink(context || 'default')
+  const settingsImage = useSelector(
     (state: RootState) => state.counter.Settings.Styles.backgroundImageUrl
   )
+  // Use first the custom src
+  let backgroundImageUrl = ''
+  if (src) {
+    backgroundImageUrl = src
+  } else if (context) {
+    // then use context image from settings
+    backgroundImageUrl = dynamicCDN
+  } else if (!context) {
+    // Fallback to settings image
+    backgroundImageUrl = settingsImage
+  } else {
+    backgroundImageUrl =
+      'https://w7.pngwing.com/pngs/802/825/png-transparent-redbubble-polite-cat-meme-funny-cat-meme-thumbnail.png'
+  }
 
   if (sizeFull) {
     return (
       <div className="absolute inset-0 size-full overflow-hidden bg-slate-950">
-        <RandomImage src={backgroundImageUrl} />
+        <DynamicImage src={backgroundImageUrl} />
       </div>
     )
   }
@@ -92,7 +112,7 @@ export default function RandomImageContainer({
     <div className="relative w-full overflow-hidden bg-slate-900 p-4">
       <div className="absolute inset-0 bg-slate-900/20" />{' '}
       {/* Placeholder visual instantâneo */}
-      <RandomImage src={backgroundImageUrl} />
+      <DynamicImage src={backgroundImageUrl} />
     </div>
   )
 }

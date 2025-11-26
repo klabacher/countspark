@@ -13,7 +13,7 @@ export default function Auth() {
   return (
     <div className="flex w-full max-w-md flex-col items-center justify-center p-4">
       <HeaderMenu />
-      <div className="w-full mt-6">
+      <div className="mt-6 w-full">
         <AnimatePresence mode="wait">
           <motion.div
             key={FrontPageState}
