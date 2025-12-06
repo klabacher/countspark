@@ -224,7 +224,7 @@ function AppContainer() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-100 via-slate-50 to-slate-50 dark:from-indigo-900/20 dark:via-slate-950 dark:to-slate-950" />
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay brightness-100 contrast-150 dark:opacity-20" />
         </div>
-        <BrowserRouter basename="/countspark">
+        <BrowserRouter basename="/CountSparks">
           <SessionHandler>
             <div className="min-h-screen text-slate-900 selection:bg-indigo-500/30 dark:text-slate-200">
               <RoutesContainer />
