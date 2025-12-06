@@ -1,4 +1,4 @@
-# CountSpark - WIP
+# CountSpark - WIP - WORK IN PROGRESS
 
 ![reactjs-vite-tailwindcss-boilerplate](./docs/assets/Final_V1.png)
 
