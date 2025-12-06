@@ -23,7 +23,7 @@ INSERT INTO auth.users (
     'authenticated',
     'authenticated',
     'joao@countspark.com',
-    '$2a$10$E1P3DyRpH74nqtB5TrtlQOkUKXl2er1yBhBiO6CMfi2ZlDux5T012', -- Teste1Teste Hash fake, em dev local o Supabase pode ignorar ou você usa o link de login
+    '$2a$10$UakxLOel2eWuJ/B8QHZCXO7BWfpYxqNpesZ5iXBeHMC2MtLs7Vbcy', -- Mudei a senha viu Hash fake, em dev local o Supabase pode ignorar ou você usa o link de login
     now(),
     now(),
     now(),
@@ -42,7 +42,7 @@ INSERT INTO auth.users (
     'authenticated',
     'authenticated',
     'maria@countspark.com',
-    '$2a$10$E1P3DyRpH74nqtB5TrtlQOkUKXl2er1yBhBiO6CMfi2ZlDux5T012', -- Teste1Teste Hash fake, em dev local o Supabase pode ignorar ou você usa o link de login
+    '$2a$10$UakxLOel2eWuJ/B8QHZCXO7BWfpYxqNpesZ5iXBeHMC2MtLs7Vbcy', -- Mudei a senha viu Hash fake, em dev local o Supabase pode ignorar ou você usa o link de login
     now(),
     now(),
     now(),
